@@ -18,7 +18,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                     FeedReaderContract.FeedEntry._ID + " INTEGER NOT NULL PRIMARY KEY autoincrement," +
                     FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID + TEXT_TYPE + COMMA_SEP +
                     FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE + TEXT_TYPE + COMMA_SEP +
-                    FeedReaderContract.FeedEntry.COLUMN_NAME_CONTENT + TEXT_TYPE +
+                    FeedReaderContract.FeedEntry.COLUMN_NAME_PATH + TEXT_TYPE +
 
     " )";
 

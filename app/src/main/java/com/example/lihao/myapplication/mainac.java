@@ -28,7 +28,7 @@ public class mainac extends AppCompatActivity {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "TEST");
-        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_CONTENT, "WER BIST DU");
+        values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_PATH, "WER BIST DU");
 
 
 // Insert the new row, returning the primary key value of the new row
@@ -44,7 +44,7 @@ public class mainac extends AppCompatActivity {
         //获取title列的索引
         int titleIndex = cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE);
         //获取level列的索引
-        int contIndex = cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_NAME_CONTENT);
+        int contIndex = cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_NAME_PATH);
         for (cursor.moveToFirst();!(cursor.isAfterLast());cursor.moveToNext()) {
             result = result + cursor.getString(idIndex)+ "\t\t";
             result = result + cursor.getString(titleIndex)+ "\t\t";

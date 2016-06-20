@@ -22,25 +22,15 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         //Datenbank Class
         String result = "";
-        FeedReaderDbHelper mDbHelper = new FeedReaderDbHelper(this);
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        Cursor cursor = db.query(FeedReaderContract.FeedEntry.TABLE_NAME, null, null, null, null, null, FeedReaderContract.FeedEntry._ID+" asc");
+        DatenUse re=new DatenUse(this);
+        re.listDaten();
 
-        //获取id列的索引
-        int idIndex = cursor.getColumnIndex(FeedReaderContract.FeedEntry._ID);
-        //获取title列的索引
-        int titleIndex = cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE);
-        //获取level列的索引
-        int contIndex = cursor.getColumnIndex(FeedReaderContract.FeedEntry.COLUMN_NAME_CONTENT);
-        for (cursor.moveToFirst();!(cursor.isAfterLast());cursor.moveToNext()) {
-            result = result + cursor.getString(idIndex)+ "\t\t";
-            result = result + cursor.getString(titleIndex)+ "\t\t";
-            result = result + cursor.getString(contIndex)+"       \n";
+        for (int i:re.TID){
+            result = result + re.TID[i]+ "\t\t";
+            result = result + re.Title[i]+ "\t\t";
+            result = result + re.Path[i]+"       \n";
         }
         String message =result;
-
-
-
 
 
         // Create the text view
