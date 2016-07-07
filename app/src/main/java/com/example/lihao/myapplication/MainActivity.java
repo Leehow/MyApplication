@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.edit_message);
         String message = editText.getText().toString();
 
+
+
         DatenUse re=new DatenUse(this);
         re.insert_tp(message,"www.google.com");
 

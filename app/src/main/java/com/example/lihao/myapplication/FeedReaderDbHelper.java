@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
 
 
+    private static final String INT_TYPE = " INTEGER";
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
@@ -21,6 +22,21 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
                     FeedReaderContract.FeedEntry.COLUMN_NAME_PATH + TEXT_TYPE +
 
     " )";
+    private static final String SQL_CREATE_LOCKED=
+            "CREATE TABLE " + FeedReaderContract.idlockedt.il_TABLE_NAME + " (" +
+                    FeedReaderContract.idlockedt.il_CID + " INTEGER NOT NULL PRIMARY KEY autoincrement," +
+                    FeedReaderContract.idlockedt.il_ID + TEXT_TYPE + COMMA_SEP +
+                    FeedReaderContract.idlockedt.il_Locked + INT_TYPE +
+
+                    " )";
+
+    private static final String SQL_CREATE_NVALUE=
+            "CREATE TABLE " + FeedReaderContract.valuet.v_TABLE_NAME + " (" +
+                    FeedReaderContract.valuet.v_CID + " INTEGER NOT NULL PRIMARY KEY autoincrement," +
+                    FeedReaderContract.valuet.v_NAME + TEXT_TYPE + COMMA_SEP +
+                    FeedReaderContract.valuet.v_VALUE + TEXT_TYPE +
+
+                    " )";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS "+FeedReaderContract.FeedEntry.TABLE_NAME;
@@ -33,6 +49,8 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
     }
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_CREATE_LOCKED);
+        db.execSQL(SQL_CREATE_NVALUE);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // This database is only a cache for online data, so its upgrade policy is
